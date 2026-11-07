@@ -223,7 +223,7 @@ static uint64_t virtual_device_in(const char *line)
     if (!strstr(line, "DEVICE_ADDED"))
         return 0;
     old_format = strstr(line, "type:1") && strstr(line, "subType:22");
-    new_format = hex_after(line, "deviceType=") == 22;
+    new_format = decimal_after(line, "device Type=") == 22;
     if (!old_format && !new_format) return 0;
     bat = strstr(line, "capabilityBattery:");
     if (bat && bat[18] != '0') return 0;
